@@ -2,9 +2,7 @@
 {
 	Properties
 	{
-		_RimColor("Rim Color", Color) = (1, 0, 0, 1)
 		_BaseColor("Base Color", Color) = (0, 0, 0, 1)
-		_Amplify("Amplify", Float) = 0.0
 	}
 	SubShader
 	{
@@ -30,9 +28,7 @@
 				float3 normal : NORMAL;
 			};
 
-			float4 _RimColor;
 			float4 _BaseColor;
-			float _Amplify;
 
 			v2f vert(appdata v)
 			{
@@ -45,11 +41,7 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				float3 n = normalize(i.normal);
-				float3 v = normalize(_WorldSpaceCameraPos.xyz - i.vertexInWorldCoords);
-				float ndotv = dot(n, v) * _Amplify;
-
-				return lerp(_RimColor, _BaseColor, ndotv);
+				return _BaseColor;
 			}
 			ENDCG
 		}
