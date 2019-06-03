@@ -306,7 +306,6 @@ GameObject:
   - component: {fileID: 2121979917}
   - component: {fileID: 2121979916}
   - component: {fileID: 2121979915}
-  - component: {fileID: 2121979921}
   - component: {fileID: 2121979920}
   - component: {fileID: 2121979919}
   m_Layer: 0
@@ -497,7 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowMag: 0
-  highMag: 1
+  highMag: 7
   colors:
   - {r: 0, g: 1, b: 0.8612397, a: 1}
   - {r: 0.3803922, g: 0.75925016, b: 1, a: 1}
@@ -506,15 +505,5 @@ MonoBehaviour:
   - {r: 1, g: 0.55608606, b: 0.21226418, a: 1}
   length: 0.75
   center: {x: 0, y: 0, z: 0}
---- !u!114 &2121979921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121979914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7215380dab78f3d4a88f589f00cc3c12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  top: 0.3
+  bottom: -0.5

@@ -9,11 +9,13 @@ public class ConvertAudio : MonoBehaviour {
     public Color[] colors;
     public float length;
     public Vector3 center;
+    public float top;
+    public float bottom;
 
     private AudioSource _audioSource;
 	private Renderer _renderer;
     private static float[] _spectrumData;
-    private float[] aveMag;
+    private float[] _aveMag;
 
     private void Awake()
     {
@@ -21,15 +23,21 @@ public class ConvertAudio : MonoBehaviour {
         {
             Debug.LogError("No colors assigned");
         }
+
+        if (colors.Length > 128)
+        {
+            Debug.LogError("Too many colors assigned. 128 max");
+        }
+
         _audioSource = GetComponent<AudioSource>();
         _renderer = GetComponent<Renderer>();
 
         _renderer.material.shader = Shader.Find("Custom/IanVisualizerLocal");
 
-        aveMag = new float[colors.Length];
         _spectrumData = new float[512];
 
         _renderer.material.SetColorArray("_Colors", colors);
+        _renderer.material.SetInt("_Count", colors.Length);
     }
 
 	void Update ()
@@ -37,13 +45,14 @@ public class ConvertAudio : MonoBehaviour {
         GetSpectrumAudioSource();
 
         int partitions = colors.Length;
-		float partitionIndx = 0;
+        _aveMag = new float[partitions];
+        float partitionIndx = 0;
 		int numDisplayedBins = 512 / 2; 
 
 		for (int i = 0; i < numDisplayedBins; i++) 
 		{
 			if(i < numDisplayedBins * (partitionIndx + 1) / partitions){
-				aveMag[(int)partitionIndx] += _spectrumData [i] / (512/partitions);
+                _aveMag[(int)partitionIndx] += _spectrumData [i] / (512/partitions);
 			}
 			else{
 				partitionIndx++;
@@ -53,14 +62,14 @@ public class ConvertAudio : MonoBehaviour {
 
 		for(int i = 0; i < partitions; i++)
 		{
-			aveMag[i] = aveMag[i]*1000;
-			if (aveMag[i] > 100) {
-				aveMag[i] = 100;
+			_aveMag[i] = _aveMag[i]*1000;
+			if (_aveMag[i] > 100) {
+				_aveMag[i] = 100;
 			}
-            float newMag = Mathf.Max(lowMag, Mathf.Min(highMag, aveMag[i]));
+            float newMag = Mathf.Max(lowMag, Mathf.Min(highMag, _aveMag[i]));
             newMag -= lowMag;
             newMag /= (highMag - lowMag);
-            aveMag[i] = newMag;
+            _aveMag[i] = newMag;
         }
 
         SetShaderValues();
@@ -74,10 +83,10 @@ public class ConvertAudio : MonoBehaviour {
     void SetShaderValues()
     {
         _renderer.material.SetFloat("_Length", length);
+        _renderer.material.SetFloat("_Bottom", bottom);
+        _renderer.material.SetFloat("_Top", top);
         _renderer.material.SetVector("_Center", new Vector4(center.x, center.y, center.z, 0f));
-        _renderer.material.SetFloatArray("_Magnitudes", aveMag);
+        _renderer.material.SetFloatArray("_Magnitudes", _aveMag);
     }
-
-
 }
 

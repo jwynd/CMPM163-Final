@@ -4,18 +4,18 @@
 	{
 		_BaseColor("Base Color", Color) = (0, 0, 0, 1)
 		_Center("Center", Vector) = (0, 0, 0, 0)
+		_Bottom("Bottom", Float) = 0.0
+		_Top("Top", Float) = 1.0
 		_Length("Length", Float) = 5.0
 		_Count("Count", Int) = 1
 	}
 
-	SubShader
+		SubShader
 	{
 
 		Pass
 		{
 			CGPROGRAM
-// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
-#pragma exclude_renderers d3d11 gles
 
 			#pragma vertex vert
 			#pragma fragment frag
@@ -37,11 +37,13 @@
 			};
 
 			float4 _BaseColor;
-			int _Count;
-			float4[] _Colors = float4[100];
-			float[] _Magnitudes = float[100];
+			float4 _Colors[128];
+			float _Magnitudes[128];
 			float4 _Center;
+			float _Bottom;
+			float _Top;
 			float _Length;
+			int _Count;
 
 			v2f vert(appdata v)
 			{
@@ -57,10 +59,18 @@
 			{
 				float4 offset = i.rawVertex - _Center;
 				float bound = _Length / 2.0;
-				if (abs(offset.x) < bound)
+
+				bool inBound = abs(offset.x) <= bound;
+				bool aboveBottom = i.rawVertex.y >= _Bottom;
+
+				float segment = _Length / _Count;
+				float distanceFromRight = i.rawVertex.x - (_Center.x - bound);
+				int index = (int)(distanceFromRight / segment);
+				bool withinMagnitude = i.rawVertex.y <= _Bottom + _Magnitudes[index] * (_Top - _Bottom);
+
+				if (inBound && aboveBottom && withinMagnitude)
 				{
-					//return _Colors[0];
-					return float4(1.0, 1.0, 1.0, 1.0);
+					return _Colors[index];
 				}
 				else 
 				{
