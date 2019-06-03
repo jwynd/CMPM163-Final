@@ -11,6 +11,9 @@ public class ConvertAudio : MonoBehaviour {
     public Vector3 center;
     public float top;
     public float bottom;
+    public bool lerpColors = false;
+    public bool lerpMagnitudes = false;
+    public float lerpSpeed = 1f;
 
     private AudioSource _audioSource;
 	private Renderer _renderer;
@@ -35,6 +38,7 @@ public class ConvertAudio : MonoBehaviour {
         _renderer.material.shader = Shader.Find("Custom/IanVisualizerLocal");
 
         _spectrumData = new float[512];
+        _aveMag = new float[colors.Length];
 
         _renderer.material.SetColorArray("_Colors", colors);
         _renderer.material.SetInt("_Count", colors.Length);
@@ -45,14 +49,14 @@ public class ConvertAudio : MonoBehaviour {
         GetSpectrumAudioSource();
 
         int partitions = colors.Length;
-        _aveMag = new float[partitions];
+        float[] newMags = new float[partitions];
         float partitionIndx = 0;
 		int numDisplayedBins = 512 / 2; 
 
 		for (int i = 0; i < numDisplayedBins; i++) 
 		{
 			if(i < numDisplayedBins * (partitionIndx + 1) / partitions){
-                _aveMag[(int)partitionIndx] += _spectrumData [i] / (512/partitions);
+                newMags[(int)partitionIndx] += _spectrumData [i] / (512/partitions);
 			}
 			else{
 				partitionIndx++;
@@ -62,14 +66,22 @@ public class ConvertAudio : MonoBehaviour {
 
 		for(int i = 0; i < partitions; i++)
 		{
-			_aveMag[i] = _aveMag[i]*1000;
-			if (_aveMag[i] > 100) {
-				_aveMag[i] = 100;
+            newMags[i] = newMags[i]*1000;
+			if (newMags[i] > 100) {
+                newMags[i] = 100;
 			}
-            float newMag = Mathf.Max(lowMag, Mathf.Min(highMag, _aveMag[i]));
-            newMag -= lowMag;
-            newMag /= (highMag - lowMag);
-            _aveMag[i] = newMag;
+            newMags[i] = Mathf.Max(lowMag, Mathf.Min(highMag, newMags[i]));
+            newMags[i] -= lowMag;
+            newMags[i] /= (highMag - lowMag);
+
+            if (lerpMagnitudes)
+            {
+                _aveMag[i] = Mathf.Lerp(_aveMag[i], newMags[i], lerpSpeed * Time.deltaTime);
+            }
+            else
+            {
+                _aveMag[i] = newMags[i];
+            }
         }
 
         SetShaderValues();
@@ -87,6 +99,7 @@ public class ConvertAudio : MonoBehaviour {
         _renderer.material.SetFloat("_Top", top);
         _renderer.material.SetVector("_Center", new Vector4(center.x, center.y, center.z, 0f));
         _renderer.material.SetFloatArray("_Magnitudes", _aveMag);
+        _renderer.material.SetInt("_LerpColors", lerpColors ? 1 : 0);
     }
 }
 

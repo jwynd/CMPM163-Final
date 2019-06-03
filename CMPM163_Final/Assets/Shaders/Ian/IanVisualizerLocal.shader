@@ -8,6 +8,7 @@
 		_Top("Top", Float) = 1.0
 		_Length("Length", Float) = 5.0
 		_Count("Count", Int) = 1
+		_LerpColors("Lerp Colors", Int) = 0
 	}
 
 		SubShader
@@ -43,7 +44,8 @@
 			float _Bottom;
 			float _Top;
 			float _Length;
-			int _Count;
+			uint _Count;
+			bool _LerpColors;
 
 			v2f vert(appdata v)
 			{
@@ -65,12 +67,17 @@
 
 				float segment = _Length / _Count;
 				float distanceFromRight = i.rawVertex.x - (_Center.x - bound);
-				int index = (int)(distanceFromRight / segment);
+				uint index = (int)(distanceFromRight / segment);
 				bool withinMagnitude = i.rawVertex.y <= _Bottom + _Magnitudes[index] * (_Top - _Bottom);
 
 				if (inBound && aboveBottom && withinMagnitude)
 				{
-					return _Colors[index];
+					if (_LerpColors == 1) {
+						return lerp(_Colors[0], _Colors[_Count - 1], (float)index / (_Count - 1));
+					}
+					else {
+						return _Colors[index];
+					}
 				}
 				else 
 				{
