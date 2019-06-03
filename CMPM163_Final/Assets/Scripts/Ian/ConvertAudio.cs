@@ -7,6 +7,8 @@ public class ConvertAudio : MonoBehaviour {
     public float lowMag;
     public float highMag;
     public Color[] colors;
+    public float length;
+    public Vector3 center;
 
     private AudioSource _audioSource;
 	private Renderer _renderer;
@@ -26,11 +28,8 @@ public class ConvertAudio : MonoBehaviour {
 
         aveMag = new float[colors.Length];
         _spectrumData = new float[512];
-    }
 
-    void GetSpectrumAudioSource()
-    {
-        _audioSource.GetSpectrumData(_spectrumData, 0, FFTWindow.Hanning);
+        _renderer.material.SetColorArray("_Colors", colors);
     }
 
 	void Update ()
@@ -63,7 +62,21 @@ public class ConvertAudio : MonoBehaviour {
             newMag /= (highMag - lowMag);
             aveMag[i] = newMag;
         }
-	}
+
+        SetShaderValues();
+    }
+
+    void GetSpectrumAudioSource()
+    {
+        _audioSource.GetSpectrumData(_spectrumData, 0, FFTWindow.Hanning);
+    }
+
+    void SetShaderValues()
+    {
+        _renderer.material.SetFloat("_Length", length);
+        _renderer.material.SetVector("_Center", new Vector4(center.x, center.y, center.z, 0f));
+        _renderer.material.SetFloatArray("_Magnitudes", aveMag);
+    }
 
 
 }

@@ -504,6 +504,8 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0.9683542, a: 1}
   - {r: 1, g: 0.3820755, b: 0.980709, a: 1}
   - {r: 1, g: 0.55608606, b: 0.21226418, a: 1}
+  length: 0.75
+  center: {x: 0, y: 0, z: 0}
 --- !u!114 &2121979921
 MonoBehaviour:
   m_ObjectHideFlags: 0
