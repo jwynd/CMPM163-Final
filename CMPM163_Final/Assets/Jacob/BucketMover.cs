@@ -22,6 +22,9 @@ public class BucketMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for(int j = 0; j < 8; j++){
+            buckets[j] = 0;
+        }
         int i = 0;
         for(int j = 0; j < buckets.Length; ++j){
             for(int k = j==0?0:cutoffs[j-1]; k < cutoffs[j]; ++k){
@@ -32,7 +35,7 @@ public class BucketMover : MonoBehaviour
 
         for(int j = 0; j < buckets.Length; ++j){
             //Debug.Log(j);
-            this.transform.GetChild(j).localPosition = new Vector3(this.transform.GetChild(j).localPosition.x, buckets[j], 0);
+            this.transform.GetChild(j).localPosition = new Vector3(this.transform.GetChild(j).localPosition.x, buckets[j]*3, 0);
         }
     }
 }
