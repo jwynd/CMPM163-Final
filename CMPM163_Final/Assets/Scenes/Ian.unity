@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 754554195}
   - component: {fileID: 754554194}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Audio Reader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,6 +259,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1079202519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079202521}
+  - component: {fileID: 1079202520}
+  m_Layer: 0
+  m_Name: Visualizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1079202520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079202519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb511b237608e9b4a9aa77c3a2c26707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowMag: 0
+  highMag: 10
+  colors:
+  - {r: 0.14901961, g: 0.32941177, b: 0.4862745, a: 1}
+  - {r: 0.31132075, g: 0.47784123, b: 0.6226415, a: 1}
+  - {r: 0.9372549, g: 0.2784314, b: 0.43529412, a: 1}
+  - {r: 0.9716981, g: 0.44918123, b: 0.57359004, a: 1}
+  - {r: 1, g: 0.81960785, b: 0.4, a: 1}
+  - {r: 0.9528302, g: 0.7393276, b: 0.24270204, a: 1}
+  - {r: 0.023529412, g: 0.8392157, b: 0.627451, a: 1}
+  - {r: 0.44045928, g: 0.9528302, b: 0.8198108, a: 1}
+  - {r: 0.45490196, g: 0.7019608, b: 0.80784315, a: 1}
+  - {r: 0.9882353, g: 0.9882353, b: 0.9882353, a: 1}
+  length: 4
+  center: {x: 0, y: 0, z: 0}
+  top: 2
+  bottom: -0.5
+  lerpColors: 0
+  lerpMagnitudes: 1
+  useWorldPositions: 1
+  lerpSpeed: 25
+  renderers:
+  - {fileID: 2121979916}
+  - {fileID: 1978538657}
+--- !u!4 &1079202521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079202519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5303946, y: 5.6576514, z: -6.590335}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1683937304
 GameObject:
@@ -537,7 +604,6 @@ GameObject:
   - component: {fileID: 2121979917}
   - component: {fileID: 2121979916}
   - component: {fileID: 2121979915}
-  - component: {fileID: 2121979920}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -617,39 +683,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2121979920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121979914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb511b237608e9b4a9aa77c3a2c26707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lowMag: 0
-  highMag: 10
-  colors:
-  - {r: 0.14901961, g: 0.32941177, b: 0.4862745, a: 1}
-  - {r: 0.31132075, g: 0.47784123, b: 0.6226415, a: 1}
-  - {r: 0.9372549, g: 0.2784314, b: 0.43529412, a: 1}
-  - {r: 0.9716981, g: 0.44918123, b: 0.57359004, a: 1}
-  - {r: 1, g: 0.81960785, b: 0.4, a: 1}
-  - {r: 0.9528302, g: 0.7393276, b: 0.24270204, a: 1}
-  - {r: 0.023529412, g: 0.8392157, b: 0.627451, a: 1}
-  - {r: 0.44045928, g: 0.9528302, b: 0.8198108, a: 1}
-  - {r: 0.45490196, g: 0.7019608, b: 0.80784315, a: 1}
-  - {r: 0.9882353, g: 0.9882353, b: 0.9882353, a: 1}
-  length: 4
-  center: {x: 0, y: 0, z: 0}
-  top: 2
-  bottom: -0.5
-  lerpColors: 0
-  lerpMagnitudes: 1
-  useWorldPositions: 1
-  lerpSpeed: 25
-  renderers:
-  - {fileID: 2121979916}
-  - {fileID: 1978538657}
