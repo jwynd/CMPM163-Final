@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConvertAudio : MonoBehaviour {
-
-    public float lowMag;
-    public float highMag;
+public class ConvertAudio : MonoBehaviour
+{
     public Color[] colors;
+    public Magnitudes[] magnitudes;
     public float length;
     public Vector3 center;
     public float top;
@@ -30,6 +29,11 @@ public class ConvertAudio : MonoBehaviour {
         if (colors.Length > 128)
         {
             Debug.LogError("Too many colors assigned. 128 max");
+        }
+
+        if (colors.Length != magnitudes.Length)
+        {
+            Debug.LogError("Color and magnitudes do not match up");
         }
 
         _aveMag = new float[colors.Length];
@@ -73,9 +77,9 @@ public class ConvertAudio : MonoBehaviour {
 			if (newMags[i] > 100) {
                 newMags[i] = 100;
 			}
-            newMags[i] = Mathf.Max(lowMag, Mathf.Min(highMag, newMags[i]));
-            newMags[i] -= lowMag;
-            newMags[i] /= (highMag - lowMag);
+            newMags[i] = Mathf.Max(magnitudes[i].low, Mathf.Min(magnitudes[i].high, newMags[i]));
+            newMags[i] -= magnitudes[i].low;
+            newMags[i] /= (magnitudes[i].high - magnitudes[i].low);
 
             if (lerpMagnitudes)
             {
@@ -104,6 +108,13 @@ public class ConvertAudio : MonoBehaviour {
             material.SetInt("_LerpColors", lerpColors ? 1 : 0);
             material.SetInt("_UseWorldPositions", useWorldPositions ? 1 : 0);
         }
+    }
+
+    [System.Serializable]
+    public class Magnitudes
+    {
+        public float low;
+        public float high;
     }
 }
 

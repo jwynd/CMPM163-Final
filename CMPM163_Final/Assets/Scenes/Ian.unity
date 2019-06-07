@@ -289,8 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb511b237608e9b4a9aa77c3a2c26707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowMag: 0
-  highMag: 10
   colors:
   - {r: 0.14901961, g: 0.32941177, b: 0.4862745, a: 1}
   - {r: 0.31132075, g: 0.47784123, b: 0.6226415, a: 1}
@@ -301,7 +299,28 @@ MonoBehaviour:
   - {r: 0.023529412, g: 0.8392157, b: 0.627451, a: 1}
   - {r: 0.44045928, g: 0.9528302, b: 0.8198108, a: 1}
   - {r: 0.45490196, g: 0.7019608, b: 0.80784315, a: 1}
-  - {r: 0.9882353, g: 0.9882353, b: 0.9882353, a: 1}
+  - {r: 0.6494749, g: 0.8882386, b: 0.990566, a: 1}
+  magnitudes:
+  - low: 0
+    high: 12
+  - low: 0
+    high: 7
+  - low: 0
+    high: 5
+  - low: 0
+    high: 5
+  - low: 0
+    high: 5
+  - low: 0
+    high: 5
+  - low: 0
+    high: 5
+  - low: 0
+    high: 3
+  - low: 0
+    high: 3
+  - low: 0
+    high: 1
   length: 4
   center: {x: 0, y: 0, z: 0}
   top: 2
