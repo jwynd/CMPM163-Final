@@ -3,13 +3,6 @@
 	Properties
 	{
 		_BaseColor("Base Color", Color) = (0, 0, 0, 1)
-		_Center("Center", Vector) = (0, 0, 0, 0)
-		_Bottom("Bottom", Float) = 0.0
-		_Top("Top", Float) = 1.0
-		_Length("Length", Float) = 5.0
-		_Count("Count", Int) = 1
-		_LerpColors("Lerp Colors", Int) = 0
-		_UseWorldPositions("Use World Positions", Int) = 0
 	}
 
 		SubShader
