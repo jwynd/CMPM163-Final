@@ -15,8 +15,9 @@ public class ConvertAudio : MonoBehaviour {
     public bool lerpMagnitudes = false;
     public bool useWorldPositions = false;
     public float lerpSpeed = 1f;
-    public Material[] materials;
+    public Renderer[] renderers;
 
+    private List<Material> _materials;
     private float[] _aveMag;
 
     private void Awake()
@@ -32,8 +33,14 @@ public class ConvertAudio : MonoBehaviour {
         }
 
         _aveMag = new float[colors.Length];
+        _materials = new List<Material>();
 
-        foreach (Material material in materials)
+        foreach (Renderer renderer in renderers)
+        {
+            _materials.Add(renderer.material);
+        }
+
+        foreach (Material material in _materials)
         {
             material.shader = Shader.Find("Custom/IanVisualizerLocal");
             material.SetColorArray("_Colors", colors);
@@ -87,7 +94,7 @@ public class ConvertAudio : MonoBehaviour {
 
     void SetShaderValues()
     {
-        foreach (Material material in materials)
+        foreach (Material material in _materials)
         {
             material.SetFloat("_Length", length);
             material.SetFloat("_Bottom", bottom);
