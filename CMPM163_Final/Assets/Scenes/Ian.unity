@@ -559,3 +559,5 @@ MonoBehaviour:
   lerpMagnitudes: 1
   useWorldPositions: 0
   lerpSpeed: 25
+  materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}

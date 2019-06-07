@@ -15,8 +15,8 @@ public class ConvertAudio : MonoBehaviour {
     public bool lerpMagnitudes = false;
     public bool useWorldPositions = false;
     public float lerpSpeed = 1f;
+    public Material[] materials;
 
-	private Renderer _renderer;
     private float[] _aveMag;
 
     private void Awake()
@@ -31,14 +31,14 @@ public class ConvertAudio : MonoBehaviour {
             Debug.LogError("Too many colors assigned. 128 max");
         }
 
-        _renderer = GetComponent<Renderer>();
-
-        _renderer.material.shader = Shader.Find("Custom/IanVisualizerLocal");
-
         _aveMag = new float[colors.Length];
 
-        _renderer.material.SetColorArray("_Colors", colors);
-        _renderer.material.SetInt("_Count", colors.Length);
+        foreach (Material material in materials)
+        {
+            material.shader = Shader.Find("Custom/IanVisualizerLocal");
+            material.SetColorArray("_Colors", colors);
+            material.SetInt("_Count", colors.Length);
+        }
     }
 
 	void Update ()
@@ -87,13 +87,16 @@ public class ConvertAudio : MonoBehaviour {
 
     void SetShaderValues()
     {
-        _renderer.material.SetFloat("_Length", length);
-        _renderer.material.SetFloat("_Bottom", bottom);
-        _renderer.material.SetFloat("_Top", top);
-        _renderer.material.SetVector("_Center", new Vector4(center.x, center.y, center.z, 0f));
-        _renderer.material.SetFloatArray("_Magnitudes", _aveMag);
-        _renderer.material.SetInt("_LerpColors", lerpColors ? 1 : 0);
-        _renderer.material.SetInt("_UseWorldPositions", useWorldPositions ? 1 : 0);
+        foreach (Material material in materials)
+        {
+            material.SetFloat("_Length", length);
+            material.SetFloat("_Bottom", bottom);
+            material.SetFloat("_Top", top);
+            material.SetVector("_Center", new Vector4(center.x, center.y, center.z, 0f));
+            material.SetFloatArray("_Magnitudes", _aveMag);
+            material.SetInt("_LerpColors", lerpColors ? 1 : 0);
+            material.SetInt("_UseWorldPositions", useWorldPositions ? 1 : 0);
+        }
     }
 }
 
