@@ -13,11 +13,10 @@ public class ConvertAudio : MonoBehaviour {
     public float bottom;
     public bool lerpColors = false;
     public bool lerpMagnitudes = false;
+    public bool useWorldPositions = false;
     public float lerpSpeed = 1f;
 
-    private AudioSource _audioSource;
 	private Renderer _renderer;
-    private static float[] _spectrumData;
     private float[] _aveMag;
 
     private void Awake()
@@ -32,12 +31,10 @@ public class ConvertAudio : MonoBehaviour {
             Debug.LogError("Too many colors assigned. 128 max");
         }
 
-        _audioSource = GetComponent<AudioSource>();
         _renderer = GetComponent<Renderer>();
 
         _renderer.material.shader = Shader.Find("Custom/IanVisualizerLocal");
 
-        _spectrumData = new float[512];
         _aveMag = new float[colors.Length];
 
         _renderer.material.SetColorArray("_Colors", colors);
@@ -46,7 +43,6 @@ public class ConvertAudio : MonoBehaviour {
 
 	void Update ()
     {
-        GetSpectrumAudioSource();
 
         int partitions = colors.Length;
         float[] newMags = new float[partitions];
@@ -56,7 +52,7 @@ public class ConvertAudio : MonoBehaviour {
 		for (int i = 0; i < numDisplayedBins; i++) 
 		{
 			if(i < numDisplayedBins * (partitionIndx + 1) / partitions){
-                newMags[(int)partitionIndx] += _spectrumData [i] / (512/partitions);
+                newMags[(int)partitionIndx] += AudioReader.Instance.SpectrumData [i] / (512/partitions);
 			}
 			else{
 				partitionIndx++;
@@ -87,10 +83,7 @@ public class ConvertAudio : MonoBehaviour {
         SetShaderValues();
     }
 
-    void GetSpectrumAudioSource()
-    {
-        _audioSource.GetSpectrumData(_spectrumData, 0, FFTWindow.Hanning);
-    }
+    
 
     void SetShaderValues()
     {
@@ -100,6 +93,7 @@ public class ConvertAudio : MonoBehaviour {
         _renderer.material.SetVector("_Center", new Vector4(center.x, center.y, center.z, 0f));
         _renderer.material.SetFloatArray("_Magnitudes", _aveMag);
         _renderer.material.SetInt("_LerpColors", lerpColors ? 1 : 0);
+        _renderer.material.SetInt("_UseWorldPositions", useWorldPositions ? 1 : 0);
     }
 }
 

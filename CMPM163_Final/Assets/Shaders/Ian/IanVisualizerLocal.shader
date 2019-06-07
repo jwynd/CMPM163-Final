@@ -9,6 +9,7 @@
 		_Length("Length", Float) = 5.0
 		_Count("Count", Int) = 1
 		_LerpColors("Lerp Colors", Int) = 0
+		_UseWorldPositions("Use World Positions", Int) = 0
 	}
 
 		SubShader
@@ -45,7 +46,8 @@
 			float _Top;
 			float _Length;
 			uint _Count;
-			bool _LerpColors;
+			int _LerpColors;
+			int _UseWorldPositions;
 
 			v2f vert(appdata v)
 			{
@@ -59,16 +61,26 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				float4 offset = i.rawVertex - _Center;
+				float4 vertex;
+				if (_UseWorldPositions == 1) 
+				{	
+					vertex = float4(i.vertexInWorldCoords, 0.0);
+				}
+				else 
+				{
+					vertex = i.rawVertex;
+				}
+
+				float4 offset = vertex - _Center;
 				float bound = _Length / 2.0;
 
 				bool inBound = abs(offset.x) <= bound;
-				bool aboveBottom = i.rawVertex.y >= _Bottom;
+				bool aboveBottom = vertex.y >= _Bottom;
 
 				float segment = _Length / _Count;
-				float distanceFromRight = i.rawVertex.x - (_Center.x - bound);
+				float distanceFromRight = vertex.x - (_Center.x - bound);
 				uint index = (int)(distanceFromRight / segment);
-				bool withinMagnitude = i.rawVertex.y <= _Bottom + _Magnitudes[index] * (_Top - _Bottom);
+				bool withinMagnitude = vertex.y <= _Bottom + _Magnitudes[index] * (_Top - _Bottom);
 
 				if (inBound && aboveBottom && withinMagnitude)
 				{
