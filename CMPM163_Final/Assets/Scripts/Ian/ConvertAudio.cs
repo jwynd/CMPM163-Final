@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// Ian Rapoport
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,7 +48,7 @@ public class ConvertAudio : MonoBehaviour
 
         foreach (Material material in _materials)
         {
-            material.shader = Shader.Find("Custom/IanVisualizerLocal");
+            material.shader = Shader.Find("Custom/IanVisualizer");
             material.SetColorArray("_Colors", colors);
             material.SetInt("_Count", colors.Length);
         }

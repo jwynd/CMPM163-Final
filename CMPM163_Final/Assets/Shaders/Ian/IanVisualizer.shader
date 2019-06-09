@@ -1,4 +1,6 @@
-﻿Shader "Custom/IanVisualizerLocal"
+﻿// Ian Rapoport
+
+Shader "Custom/IanVisualizer"
 {
 	Properties
 	{
