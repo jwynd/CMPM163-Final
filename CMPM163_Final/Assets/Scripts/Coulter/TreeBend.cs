@@ -22,7 +22,7 @@ public class TreeBend : MonoBehaviour
 
 	void Update () {
 
-		int numPartitions = 3;
+		int numPartitions = 1;
 		float[] aveMag = new float[numPartitions];
 		float partitionIndx = 0;
 		int numDisplayedBins = 512 / 2; 
@@ -30,7 +30,7 @@ public class TreeBend : MonoBehaviour
 		for (int i = 0; i < numDisplayedBins; i++) 
 		{
 			if(i < numDisplayedBins * (partitionIndx + 1) / numPartitions){
-				aveMag[(int)partitionIndx] += AudioPeer.spectrumData [i] / (512/numPartitions);
+				aveMag[(int)partitionIndx] += AudioReader.Instance.SpectrumData [i] / (512/numPartitions);
 			}
 			else{
 				partitionIndx++;
@@ -47,15 +47,10 @@ public class TreeBend : MonoBehaviour
 		}
 
 		float mag1 = aveMag[0];
-        float mag2 = aveMag[1];
-        float mag3 = aveMag[2];
 
         if (mag1 > 1.0)
         {
             displacement = 1.0f;
-        }
-        if (mag2 > 1.0)
-        {
             particles.Emit(1);
         }
         displacement = Mathf.Lerp(displacement, 0, Time.deltaTime);
