@@ -8,7 +8,12 @@ public class SpectrumData : MonoBehaviour
     public static float spectrumValue {get; private set;}
 
     public static float[] spectrumBuffer {get; private set;}
+
+    public static Color [] cubeOldColors = new Color[64];
+    public static Color [] cubeNewColors = new Color[64];
     float[] bufferDecrease;
+
+    public static Color col {get; private set;}
 
 
     // Start is called before the first frame update
@@ -17,6 +22,16 @@ public class SpectrumData : MonoBehaviour
         spectrumData = new float[128];
         spectrumBuffer = new float[128];
         bufferDecrease = new float[128];
+
+        //mat = new Material(Shader.Find("Custom/KindonOutlineShader"));
+        col = Color.red;
+    }
+
+    void CalculateColor(){
+        for(int i = 0; i < 64; i++){
+            cubeOldColors[i] = cubeNewColors[i];
+            cubeNewColors[i] = new Color(spectrumBuffer[i] * 10f * (i+1), spectrumBuffer[i] * 60f * (i+1), spectrumBuffer[i] * 80f * (i+1), 1f);
+        }
     }
 
     void BandBuffer(){
@@ -39,6 +54,7 @@ public class SpectrumData : MonoBehaviour
             spectrumValue = spectrumData[1] * 100;
             //Debug.Log("SpecVal is not null or 0");
         }
+        CalculateColor();
         BandBuffer();
     }
 }

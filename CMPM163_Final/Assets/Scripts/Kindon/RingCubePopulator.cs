@@ -15,6 +15,12 @@ public class RingCubePopulator : MonoBehaviour
     float [] prevAudioValues = new float[64];
 
     Vector3 [] restScale = new Vector3[64];
+
+    Color restCol;
+
+    
+
+    Renderer [] rend = new Renderer[64];
     void Start()
     {
         for(int i = 0; i < 64; i++){
@@ -25,7 +31,12 @@ public class RingCubePopulator : MonoBehaviour
             cubes[i] = instance;
             prevAudioValues[i] = 0f;
             restScale[i] = cubes[i].transform.localScale;
+            //cubeColors[i] = Color.black;
         }
+        restCol = GetComponentsInChildren<Renderer>()[0].material.GetColor("_OutlineColor");
+        rend = (GetComponentsInChildren<Renderer>());
+        
+        //mat.shader = Shader.Find("Custom/KindonOutlineShader");
     }
 
     bool checkBias(int i){
@@ -44,13 +55,20 @@ public class RingCubePopulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* foreach(var ma in rend){
+            ma.material.SetColor("_OutlineColor", SpectrumData.col);
+        }*/
         //if(timer > .1f){
             for(int i = 0; i < cubes.Length; i++){
                 if(cubes != null){
                     if(checkBias(i)){
                         cubes[i].transform.localScale = Vector3.Lerp(cubes[i].transform.localScale, new Vector3(1, SpectrumData.spectrumBuffer[i] * 50 * (i+1), 1), 3f * Time.deltaTime);
                         prevAudioValues[i] = SpectrumData.spectrumBuffer[i];
+                        rend[i].material.SetColor("_OutlineColor", Color.Lerp(SpectrumData.cubeOldColors[i], SpectrumData.cubeNewColors[i], Time.deltaTime*400f));
+                    }else{
+                        rend[i].material.SetColor("_OutlineColor", Color.Lerp(SpectrumData.cubeOldColors[i],  restCol, Time.deltaTime*800f));
                     }
+                    
                 }
             }
  
