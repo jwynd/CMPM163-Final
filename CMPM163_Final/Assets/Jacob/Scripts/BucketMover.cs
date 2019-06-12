@@ -35,7 +35,9 @@ public class BucketMover : MonoBehaviour
 
         for(int j = 0; j < buckets.Length; ++j){
             //Debug.Log(j);
-            this.transform.GetChild(j).localPosition = new Vector3(this.transform.GetChild(j).localPosition.x, buckets[j]*3, 0);
+            //this.transform.GetChild(j).localPosition = new Vector3(this.transform.GetChild(j).localPosition.x, buckets[j]*3, 0);
+            this.transform.GetChild(j).Rotate(0, 0, buckets[j]*3);
+            this.transform.GetChild(j).GetChild(0).gameObject.GetComponent<EmitAtHeight>().emitAtRotation(buckets[j]*3);
         }
     }
 }
