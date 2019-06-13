@@ -32,7 +32,6 @@ public class BucketMover : MonoBehaviour
                 buckets[j] += AudioPeer.spectrumData[i++];
             }
         }
-
         for(int j = 0; j < buckets.Length; ++j){
             //Debug.Log(j);
             //this.transform.GetChild(j).localPosition = new Vector3(this.transform.GetChild(j).localPosition.x, buckets[j]*3, 0);

@@ -21,6 +21,6 @@ public class EmitAtHeight : MonoBehaviour
         ps.Emit((int)Mathf.Floor(this.transform.position.z * 5));
     }*/
     public void emitAtRotation(float rot){
-        ps.Emit((int)Mathf.Floor(rot*2));
+        ps.Emit((int)Mathf.Floor(rot*6));
     }
 }
