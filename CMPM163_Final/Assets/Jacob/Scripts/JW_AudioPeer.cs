@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // create this required component....
-public class AudioPeer : MonoBehaviour {
+public class JW_AudioPeer : MonoBehaviour {
 
     // NOTE: make this a 'static' float so we can access it from any other script.
     public static float[] spectrumData = new float[512];
