@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class EmitAtHeight : MonoBehaviour
 {
-    [SerializeField][Range(0.01f,1.0f)]private float sensitivity = 0.5f;
     private ParticleSystem ps;
     // Start is called before the first frame update
     void Start()

@@ -29,7 +29,7 @@ public class BucketMover : MonoBehaviour
         for(int j = 0; j < buckets.Length; ++j){
             for(int k = j==0?0:cutoffs[j-1]; k < cutoffs[j]; ++k){
                 //Debug.Log(i);
-                buckets[j] += JW_AudioPeer.spectrumData[i++];
+                buckets[j] += W_AudioPeer.spectrumData[i++];
             }
         }
         for(int j = 0; j < buckets.Length; ++j){
