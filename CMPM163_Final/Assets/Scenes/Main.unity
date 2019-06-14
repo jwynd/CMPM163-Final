@@ -151,6 +151,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: JW_PREFAB
       objectReference: {fileID: 0}
+    - target: {fileID: 6359581401986619379, guid: bb26735e0056f1e49b53e212256fc345,
+        type: 3}
+      propertyPath: cutoffs.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359581401986619379, guid: bb26735e0056f1e49b53e212256fc345,
+        type: 3}
+      propertyPath: cutoffs.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359581401986619379, guid: bb26735e0056f1e49b53e212256fc345,
+        type: 3}
+      propertyPath: cutoffs.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359581401986619379, guid: bb26735e0056f1e49b53e212256fc345,
+        type: 3}
+      propertyPath: cutoffs.Array.data[3]
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359581401986619379, guid: bb26735e0056f1e49b53e212256fc345,
+        type: 3}
+      propertyPath: cutoffs.Array.data[4]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359581401986619379, guid: bb26735e0056f1e49b53e212256fc345,
+        type: 3}
+      propertyPath: cutoffs.Array.data[5]
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359581401986619379, guid: bb26735e0056f1e49b53e212256fc345,
+        type: 3}
+      propertyPath: cutoffs.Array.data[6]
+      value: 196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359581401986619379, guid: bb26735e0056f1e49b53e212256fc345,
+        type: 3}
+      propertyPath: cutoffs.Array.data[7]
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6844958407855215353, guid: bb26735e0056f1e49b53e212256fc345,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -245,11 +285,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 830512940}
     m_Modifications:
-    - target: {fileID: 1349099349760669276, guid: 10b1919825c5b3449ac74ce5a94f3e06,
+    - target: {fileID: 1349099348657101966, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
-      propertyPath: m_Name
-      value: CoulterShaderSphere (2)
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
     - target: {fileID: 1349099349760669264, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -325,11 +365,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
-    - target: {fileID: 1349099348657101966, guid: 10b1919825c5b3449ac74ce5a94f3e06,
+    - target: {fileID: 1349099349760669276, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
+      propertyPath: m_Name
+      value: CoulterShaderSphere (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10b1919825c5b3449ac74ce5a94f3e06, type: 3}
 --- !u!1 &771904548 stripped
@@ -423,11 +463,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3726135482219377815, guid: b625b514a0e5f0648885d421bccfd7de,
-        type: 3}
-      propertyPath: m_Name
-      value: Kindon's Contribution
-      objectReference: {fileID: 0}
     - target: {fileID: 3726135482219377813, guid: b625b514a0e5f0648885d421bccfd7de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -483,6 +518,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3726135482219377815, guid: b625b514a0e5f0648885d421bccfd7de,
+        type: 3}
+      propertyPath: m_Name
+      value: Kindon's Contribution
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b625b514a0e5f0648885d421bccfd7de, type: 3}
 --- !u!1001 &1342876333
@@ -492,11 +532,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 830512940}
     m_Modifications:
-    - target: {fileID: 1349099349760669276, guid: 10b1919825c5b3449ac74ce5a94f3e06,
+    - target: {fileID: 1349099348657101966, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
-      propertyPath: m_Name
-      value: CoulterShaderSphere
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
     - target: {fileID: 1349099349760669264, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -572,11 +612,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
-    - target: {fileID: 1349099348657101966, guid: 10b1919825c5b3449ac74ce5a94f3e06,
+    - target: {fileID: 1349099349760669276, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
+      propertyPath: m_Name
+      value: CoulterShaderSphere
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10b1919825c5b3449ac74ce5a94f3e06, type: 3}
 --- !u!1 &1537700248 stripped
@@ -814,11 +854,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 830512940}
     m_Modifications:
-    - target: {fileID: 1349099349760669276, guid: 10b1919825c5b3449ac74ce5a94f3e06,
+    - target: {fileID: 1349099348657101966, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
-      propertyPath: m_Name
-      value: CoulterShaderSphere (1)
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
     - target: {fileID: 1349099349760669264, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -894,11 +934,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
-    - target: {fileID: 1349099348657101966, guid: 10b1919825c5b3449ac74ce5a94f3e06,
+    - target: {fileID: 1349099349760669276, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
+      propertyPath: m_Name
+      value: CoulterShaderSphere (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10b1919825c5b3449ac74ce5a94f3e06, type: 3}
 --- !u!4 &2026163584 stripped
@@ -914,11 +954,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 830512940}
     m_Modifications:
-    - target: {fileID: 1349099349760669276, guid: 10b1919825c5b3449ac74ce5a94f3e06,
+    - target: {fileID: 1349099348657101966, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
-      propertyPath: m_Name
-      value: CoulterShaderSphere (3)
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
     - target: {fileID: 1349099349760669264, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -994,11 +1034,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
-    - target: {fileID: 1349099348657101966, guid: 10b1919825c5b3449ac74ce5a94f3e06,
+    - target: {fileID: 1349099349760669276, guid: 10b1919825c5b3449ac74ce5a94f3e06,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e2525e6466deef944b4ea208e8fdcfcb, type: 2}
+      propertyPath: m_Name
+      value: CoulterShaderSphere (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10b1919825c5b3449ac74ce5a94f3e06, type: 3}
 --- !u!1001 &1377078543479083412
@@ -1008,11 +1048,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1377078543130526917, guid: ba3948c141a46dd4585fc8e0be36e81d,
-        type: 3}
-      propertyPath: m_Name
-      value: Audio Reader
-      objectReference: {fileID: 0}
     - target: {fileID: 1377078543130526912, guid: ba3948c141a46dd4585fc8e0be36e81d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1068,6 +1103,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1377078543130526917, guid: ba3948c141a46dd4585fc8e0be36e81d,
+        type: 3}
+      propertyPath: m_Name
+      value: Audio Reader
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba3948c141a46dd4585fc8e0be36e81d, type: 3}
 --- !u!1001 &4709380166315529637
@@ -1077,11 +1117,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8541744441604817472, guid: 59002f8bd25347f42b7efae165fa4b67,
-        type: 3}
-      propertyPath: m_Name
-      value: Ian's Contributiion
-      objectReference: {fileID: 0}
     - target: {fileID: 622906304940471808, guid: 59002f8bd25347f42b7efae165fa4b67,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1136,6 +1171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541744441604817472, guid: 59002f8bd25347f42b7efae165fa4b67,
+        type: 3}
+      propertyPath: m_Name
+      value: Ian's Contributiion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59002f8bd25347f42b7efae165fa4b67, type: 3}
