@@ -30,7 +30,7 @@ public class SpectrumData : MonoBehaviour
     void CalculateColor(){
         for(int i = 0; i < 64; i++){
             cubeOldColors[i] = cubeNewColors[i];
-            cubeNewColors[i] = new Color(spectrumBuffer[i] * 10f * (i+1), spectrumBuffer[i] * 60f * (i+1), spectrumBuffer[i] * 80f * (i+1), 1f);
+            cubeNewColors[i] = new Color(spectrumBuffer[i] * 10f, spectrumBuffer[i] * 60f, spectrumBuffer[i] * 80f, 1f);
         }
     }
 
