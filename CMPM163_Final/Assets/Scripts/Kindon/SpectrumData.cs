@@ -26,11 +26,11 @@ public class SpectrumData : MonoBehaviour
         //mat = new Material(Shader.Find("Custom/KindonOutlineShader"));
         col = Color.red;
     }
-
+ 
     void CalculateColor(){
         for(int i = 0; i < 64; i++){
             cubeOldColors[i] = cubeNewColors[i];
-            cubeNewColors[i] = new Color(spectrumBuffer[i] * 10f, spectrumBuffer[i] * 60f, spectrumBuffer[i] * 80f, 1f);
+            cubeNewColors[i] = new Color(spectrumBuffer[i] * 10f, spectrumBuffer[i] * 60f, spectrumBuffer[i] * 150f, 1f);
         }
     }
 
