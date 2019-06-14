@@ -7,6 +7,10 @@ using UnityEngine;
 public class Rotate : MonoBehaviour
 {
     public float rotateSpeed;
+    void Awake(){
+        rotateSpeed = Random.Range(-rotateSpeed, rotateSpeed);
+        while(rotateSpeed == 0) rotateSpeed = Random.Range(-rotateSpeed, rotateSpeed);
+    }
 
     void Update()
     {
